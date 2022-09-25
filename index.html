@@ -74,14 +74,13 @@
                 </tr>
             </table>
         </div>
+        <div align="center">
+        	<input type="text" id="addItemInput">
+        	<button type="button" onclick="addItem()">목록 추가</button>
+        </div>
         <script>
 	    	// Create new wheel object specifying the parameters at creation time.
-	    	let theWheel = new Winwheel({
-	    	    'numSegments'  : 8,     // Specify number of segments.
-	    	    'outerRadius'  : 212,   // Set outer radius so wheel fits inside the background.
-	    	    'textFontSize' : 28,    // Set font size as desired.
-	    	    'segments'     :        // Define segments including colour and text.
-	    	    [
+	    	let segments = [
 	    	       {'fillStyle' : '#eae56f', 'text' : '찜닭'},
 	    	       {'fillStyle' : '#89f26e', 'text' : '스펙트럼'},
 	    	       {'fillStyle' : '#7de6ef', 'text' : '밀면'},
@@ -92,20 +91,33 @@
 	    	       {'fillStyle' : '#e7706f', 'text' : '햄버거'},
 	    	       {'fillStyle' : '#e7706f', 'text' : '한솥'},
 	    	       {'fillStyle' : '#e7706f', 'text' : '김밥천국'}
-	    	    ],
-	    	    'animation' :           // Specify the animation to use.
-	    	    {
+    	    ]
+	    	
+	    	for(i = 0; i < segments.length; i++){
+	    		segments[i].fillStyle = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+	    	};
+	    	
+	    	let numSegments = segments.length;
+	    	let outerRadius = 212;
+	    	let textFontSize = 28;
+	    	let animation = 
+    	    	{
 	    	        'type'     : 'spinToStop',
 	    	        'duration' : 15,
-	    	        'spins'    : 8,
+	    	        'spins'    : 1000,
 	    	        'callbackFinished' : alertPrize,
 	    	        'callbackSound'    : playSound,   // Function to call when the tick sound is to be triggered.
 	    	        'soundTrigger'     : 'pin'        // Specify pins are to trigger the sound, the other option is 'segment'.
-	    	    },
-	    	    'pins' :
-	    	    {
-	    	        'number' : 8   // Number of pins. They space evenly around the wheel.
-	    	    }
+	    	    };
+	    	let pins = {'number' : 16};
+	    	
+	    	let theWheel = new Winwheel({
+	    	    'numSegments'  : numSegments,     // Specify number of segments.
+	    	    'outerRadius'  : 212,   // Set outer radius so wheel fits inside the background.
+	    	    'textFontSize' : 28,    // Set font size as desired.
+	    	    'segments'     : segments,       // Define segments including colour and text.
+	    	    'animation'    : animation,          // Specify the animation to use.
+	    	    'pins'         : pins // Number of pins. They space evenly around the wheel.
 	    	});
 	    	
 	
@@ -133,7 +145,7 @@
 	    {
 	        // Do basic alert of the segment text.
 	        // You would probably want to do something more interesting with this information.
-	        alert("You have won " + indicatedSegment.text);
+	        alert(indicatedSegment.text + " 당첨!");
 	    }
 	
 	    // =======================================================================================================================
@@ -216,11 +228,15 @@
 	        theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
 	        theWheel.draw();                // Call draw to render changes to the wheel.
 	
-	        document.getElementById('pw1').className = "";  // Remove all colours from the power level indicators.
-	        document.getElementById('pw2').className = "";
-	        document.getElementById('pw3').className = "";
+	        //document.getElementById('pw1').className = "";  // Remove all colours from the power level indicators.
+	        //document.getElementById('pw2').className = "";
+	        //document.getElementById('pw3').className = "";
 	
 	        wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+	        
+            // 스핀 버튼 활성화
+            document.getElementById('spin_button').src       = "spin_on.png";
+            document.getElementById('spin_button').className = "clickable";	        
 	    }	 
         </script>
     </body>

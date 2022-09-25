@@ -37,7 +37,7 @@ function Winwheel(options, drawWheel)
         'centerY'           : null,         // Y position of the wheel center. If left null at time of construct the center of the canvas is used.
         'outerRadius'       : null,         // The radius of the outside of the wheel. If left null it will be set to the radius from the center of the canvas to its shortest side.
         'innerRadius'       : 0,            // Normally 0. Allows the creation of rings / doughnuts if set to value > 0. Should not exceed outer radius.
-        'numSegments'       : 1,            // The number of segments. Need at least one to draw.
+        'numSegments'       : 10,            // The number of segments. Need at least one to draw.
         'drawMode'          : 'code',       // The draw mode. Possible values are 'code', 'image', 'segmentImage'. Default is code which means segments are drawn using canvas arc() function.
         'rotationAngle'     : 0,            // The angle of rotation of the wheel - 0 is 12 o'clock position.
         'textFontFamily'    : 'Arial',      // Segment text font, you should use web safe fonts.
