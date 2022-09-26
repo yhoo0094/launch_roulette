@@ -8,7 +8,6 @@ window.onload = function(){
 							+ '<td><button id="'+ i +'" type="button" class="btn" onclick="removeItem(this)">삭제</button></td>'
 							+ '</tr>')	
 	}
-	
 }
 
 //목록 추가 버튼
