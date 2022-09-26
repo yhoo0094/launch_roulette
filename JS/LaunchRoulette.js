@@ -5,7 +5,7 @@ window.onload = function(){
 
 	for(i = 0; i < segments.length; i++){
 		$('#btnTable').append('<tr><td><p>'+ segments[i].text +'</p></td>' 
-							+ '<td><button id="'+ i +'" type="button" class="btn" onclick="removeItem(this)">삭제</button></td>'
+							+ '<td><button id="'+ i +'" type="button" class="btn btn-danger" onclick="removeItem(this)">삭제</button></td>'
 							+ '</tr>')	
 	}
 }
@@ -32,7 +32,6 @@ function addItem(){
 
 //삭제 버튼
 function removeItem(me){
-	//console.log($(me).attr('id'));
 	segments.splice($(me).attr('id'),1);
 	numSegments = segments.length;
 	
