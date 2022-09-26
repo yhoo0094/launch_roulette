@@ -32,10 +32,11 @@
 <html>
     <head>
         <title>Launch Roulette</title>
-        <link rel="stylesheet" href="main.css" type="text/css" />
-        <script type="text/javascript" src="./Winwheel.js"></script>
+        <link rel="stylesheet" href="./CSS/main.css" type="text/css" />
+        <script type="text/javascript" src="./JS/Winwheel.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-        <script type="text/javascript" src="./LaunchRoulette.js"></script>
+        <script type="text/javascript" src="./JS/LaunchRoulette.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
     <body>
         <div align="center">
@@ -75,8 +76,22 @@
             </table>
         </div>
         <div align="center">
-        	<input type="text" id="addItemInput">
-        	<button type="button" onclick="addItem()">목록 추가</button>
+        	<table id="btnTable" style="width: 50vw; height: 8vh;">
+        		<colgroup>
+        			<col style="width: 80%">
+        			<col style="width: 20%">
+        		</colgroup>
+        		<tr>
+        			<td>
+        				<input type="text" id="addItemInput" class="input">
+        			</td>
+        			<td>
+        				<button type="button" class="btn" onclick="addItem()">목록 추가</button>
+        			</td>
+        		</tr>
+        	</table>
+        	
+        	
         </div>
         <script>
 	    	// Create new wheel object specifying the parameters at creation time.
