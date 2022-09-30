@@ -27,6 +27,10 @@ function addItem(){
 	    'pins'         : pins // Number of pins. They space evenly around the wheel.
 	});	
 	
+	$('#btnTable').append('<tr><td><p>'+ segments[(segments.length-1)].text +'</p></td>' 
+			+ '<td><button id="'+ (segments.length-1) +'" type="button" class="btn btn-danger" onclick="removeItem(this)">삭제</button></td>'
+			+ '</tr>');		
+	
 	document.getElementById("addItemInput").value = '';
 }
 
